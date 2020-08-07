@@ -76,20 +76,20 @@ class GridLayout: UICollectionViewLayout {
             
             let cellRect = self.collectionView(collectionViewTemp, sizeForPhotoAtIndexPath: indexPath)
             let height = cellRect.size.height
-            let frame = CGRect(x: cellRect.origin.x, y: ((item == 0) ? cellRect.origin.y : yOffset), width: cellRect.size.width, height: height)
+            let frame = CGRect(x: 0, y: yOffset, width: collectionViewTemp.bounds.width, height: height)
             let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)
             
             let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
             attributes.frame = insetFrame
             cache.append(attributes)
             
-            if item == 1 {
+//            if item == 1 {
                 yOffset = yOffset + height
-            }
-            
-            if ((item + 1) % 3) == 0 && item > 1 {
-                yOffset = yOffset + height
-            }
+//            }
+//
+//            if ((item + 1) % 3) == 0 && item > 1 {
+//                yOffset = yOffset + height
+//            }
             
             contentHeight = max(contentHeight, frame.maxY)
         }
